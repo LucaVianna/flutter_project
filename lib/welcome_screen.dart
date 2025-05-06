@@ -36,12 +36,13 @@ class WelcomeScreen extends StatelessWidget {
 
                 // Título de boas-vindas
                 Text(
-                  'Bem-vindo à nossa nova loja',
+                  'Bem-vindo à nossa loja',
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: Colors.white
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 10),
 

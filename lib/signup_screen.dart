@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './shop_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -110,7 +111,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // if (_formKey.currentState!.validate() && _agreeTerms) {
+                    if (_formKey.currentState!.validate() && _agreeTerms) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShopScreen())
+                      );
                       // final userData = {
                       //  'username': _usernameController.text,
                       //  'email': _emailController.text,
@@ -121,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // context,
                       // MaterialPageRoute(builder: (context) => NextScreen(userData));
                       // );
-                    // }
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF4AA66C),
