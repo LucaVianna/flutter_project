@@ -65,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                       // Navegação para a próxima tela
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
