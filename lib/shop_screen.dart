@@ -12,7 +12,15 @@ class ShopScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping'),
+        title: Center(
+          child: Text(
+            'Shopping',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
         backgroundColor: Color(0xFF4AA66C),
       ),
       body: Padding(
@@ -53,7 +61,7 @@ class ShopScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '\$${product['price'].toStringAsFixed(2)}',
+                    'R\$${product['price'].toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey
@@ -71,7 +79,13 @@ class ShopScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Adicionar ao carrinho'),
+                    child: Text(
+                      "+",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -85,8 +99,8 @@ class ShopScreen extends StatelessWidget {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Shop'),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explorar'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Carrinhho'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoritos'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorito'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ]
       ),
