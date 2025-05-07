@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ShopScreen extends StatelessWidget {
+class ShopScreen extends StatefulWidget {
+  final Function(Map<String, dynamic>) addToCart;
+
+  ShopScreen({required this.addToCart});
+
+  @override
+  _ShopScreenState createState() => _ShopScreenState();
+}
+
+class _ShopScreenState extends State<ShopScreen> {
   final List<Map<String, dynamic>> products = [
     {'name': 'Maçã', 'price': 7.99, 'image': 'assets/maca.jpg'},
     {'name': 'Banana', 'price': 11.99, 'image': 'assets/banana.jpg'},
@@ -71,7 +80,10 @@ class ShopScreen extends StatelessWidget {
 
                   ElevatedButton(
                     onPressed: () {
-                      // Lógica para add ao carrinhos
+                      widget.addToCart(product);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('${product['name']} adicionado(a) ao carrinho!'))
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF4AA66C),

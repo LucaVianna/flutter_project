@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/pages/home/shop_screen.dart';
 import 'package:flutter_project/pages/home/favorite_screen.dart';
 import 'package:flutter_project/pages/home/explore_screen.dart';
+import 'package:flutter_project/pages/home/cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,14 +11,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  List<Map<String, dynamic>> cartItems = [];
 
-  final List<Widget> _screens = [
-    ShopScreen(),
-    ExploreScreen(),
-    //CartScreen(),
-    FavoriteScreen(),
-    //ProfileScreen(),
-  ];
+  void addToCart(Map<String, dynamic> product) {
+    setState(() {
+      cartItems.add(product);
+    });
+  }
+
+  final List<Widget> _screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _screens.addAll([
+      ShopScreen(addToCart: addToCart),
+      ExploreScreen(),
+      CartScreen(cartItems: cartItems),
+      FavoriteScreen(),
+      //ProfileScreen(),
+    ]);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -39,14 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Loja'),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explorar'),
-          //BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Carrinho'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Carrinho'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoritos'),
           //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
       ),
     );
   }
-
-
-
 }
