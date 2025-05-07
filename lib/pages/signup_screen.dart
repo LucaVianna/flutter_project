@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './shop_screen.dart';
+import 'package:flutter_project/pages/home_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (_formKey.currentState!.validate() && _agreeTerms) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => ShopScreen())
+                        MaterialPageRoute(builder: (context) => HomeScreen())
                       );
                       // final userData = {
                       //  'username': _usernameController.text,
