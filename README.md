@@ -13,5 +13,5 @@ Telas:
 [x] Tela que se adequa ao uso de ListView
 [x] Tela que se adequa ao uso de formulário
 [x] Tela que se adequa ao iso de GridView
-[] Tela que apresenta um item selecionado
+[x] Tela que apresenta um item selecionado
 [x] Usar Widgets Material (AppBar, Drawer, BottomNavigationBar, FloatActionButton)
