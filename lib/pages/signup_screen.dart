@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/home_screen.dart';
+import './home_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

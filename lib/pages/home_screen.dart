@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/home/shop_screen.dart';
-import 'package:flutter_project/pages/home/favorite_screen.dart';
-import 'package:flutter_project/pages/home/explore_screen.dart';
-import 'package:flutter_project/pages/home/cart_screen.dart';
+import './home/shop_screen.dart';
+import './home/favorite_screen.dart';
+import './home/explore_screen.dart';
+import './home/cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,9 +13,54 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Map<String, dynamic>> cartItems = [];
 
+  // Função que adiciona item ao carrinho
   void addToCart(Map<String, dynamic> product) {
     setState(() {
-      cartItems.add(product);
+      bool exists = false;
+      for (var item in cartItems) {
+        if (item['name'] == product['name']) {
+          item['quantity'] += 1;
+          exists = true;
+          break;
+        }
+      }
+      if (!exists) {
+        cartItems.add({...product, 'quantity': 1});
+      }
+    });
+  }
+
+  // Função que aumenta a quantidade de um item no carrinho
+  void increaseQuantity(String productName) {
+    setState(() {
+      for(var item in cartItems) {
+        if (item['name'] == productName) {
+          item['quantity'] += 1;
+          break;
+        }
+      }
+    });
+  }
+
+  // Função que diminui a quantidade de um item no carrinho ou chama a Função removeFromCart
+  void decreaseQuantity(String productName) {
+    setState(() {
+      for(var item in cartItems) {
+        if (item['name'] == productName && item['quantity'] > 1) {
+          item['quantity'] -= 1;
+          break;
+        }
+        if (item['name'] == productName && item['quantity'] == 1) {
+          removeFromCart(productName);
+        }
+      }
+    });
+  }
+
+  // Função que remove um item do carrinho
+  void removeFromCart(String productName) {
+    setState(() {
+      cartItems.removeWhere((item) => item['name'] == productName);
     });
   }
 
@@ -27,7 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
     _screens.addAll([
       ShopScreen(addToCart: addToCart),
       ExploreScreen(),
-      CartScreen(cartItems: cartItems),
+      CartScreen(
+        cartItems: cartItems,
+        increaseQuantity: increaseQuantity,
+        decreaseQuantity: decreaseQuantity,
+        removeFromCart: removeFromCart,
+      ),
       FavoriteScreen(),
       //ProfileScreen(),
     ]);
