@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   final List<Map<String, dynamic>> cartItems;
   final Function(String) increaseQuantity;
   final Function(String) decreaseQuantity;
@@ -12,6 +12,17 @@ class CartScreen extends StatelessWidget {
     required this.decreaseQuantity,
     required this.removeFromCart,
   });
+
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  void updateUI() {
+    setState(() {
+      // Forçando atualização da página
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +39,7 @@ class CartScreen extends StatelessWidget {
         ),
         backgroundColor: Color(0xFF4AA66C),
       ),
-      body: cartItems.isEmpty ? Center(
+      body: widget.cartItems.isEmpty ? Center(
         child: Text(
           'Seu carrinho está vazio!',
           style: TextStyle(
@@ -38,9 +49,9 @@ class CartScreen extends StatelessWidget {
         ),
       )
       : ListView.builder(
-        itemCount: cartItems.length,
+        itemCount: widget.cartItems.length,
         itemBuilder: (context, index) {
-          final item = cartItems[index];
+          final item = widget.cartItems[index];
 
           return Card(
             margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -68,7 +79,10 @@ class CartScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.remove),
-                    onPressed: () => decreaseQuantity(item['name']),
+                    onPressed: () {
+                      widget.decreaseQuantity(item['name']);
+                      updateUI();
+                    }
                   ),
                   Text(
                     '${item['quantity']}',
@@ -78,7 +92,10 @@ class CartScreen extends StatelessWidget {
                   ),
                   IconButton(
                     icon: Icon(Icons.add),
-                    onPressed: () => increaseQuantity(item['name']),
+                    onPressed: () {
+                      widget.increaseQuantity(item['name']);
+                      updateUI();
+                    }
                   ),
                   IconButton(
                     icon: Icon(
@@ -86,7 +103,10 @@ class CartScreen extends StatelessWidget {
                       color: Colors.red,
                       size: 18,
                     ),
-                    onPressed: () => removeFromCart(item['name']),
+                    onPressed: () {
+                      widget.removeFromCart(item['name']);
+                      updateUI();                    
+                    }
                   ),
                 ],
               ),

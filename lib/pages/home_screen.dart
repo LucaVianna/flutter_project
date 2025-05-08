@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         }
         if (item['name'] == productName && item['quantity'] == 1) {
           removeFromCart(productName);
+          break;
         }
       }
     });
