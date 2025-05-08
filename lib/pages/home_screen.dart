@@ -11,15 +11,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // Index para navegação na Bottom Navigation Bar
   int _selectedIndex = 0;
+
+  // Inicia carrinho vazio
   List<Map<String, dynamic>> cartItems = [];
 
+  // Inicia a lista de telas da Bottom Navigation Bar vazia
   final List<Widget> _screens = [];
 
   @override
+  // Preenche a lista de telas da Bottom Navigation Bar
   void initState() {
     super.initState();
     _screens.addAll([
+      // Recursos utilizados (como funções e listas) são fornecidos em cada tela adicionada
       ShopScreen(addToCart: (product, quantity) => addToCart(cartItems, product, quantity, setState)),
       ExploreScreen(),
       CartScreen(
@@ -42,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Tela inidicada pela Bottom Navigation Bar
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

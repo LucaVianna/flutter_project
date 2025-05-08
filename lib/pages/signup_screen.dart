@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               // Título
               Text(
-                'Sign Up',
+                'Cadastre-se',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,

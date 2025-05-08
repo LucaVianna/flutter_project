@@ -15,13 +15,9 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int quantity = 1;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          widget.product['name'],
-        ),
+        backgroundColor: Color(0xFF4AA66C),
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -50,6 +46,7 @@ class _ProductScreenState extends State<ProductScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+                color: Colors.grey
               ),
             ),
             SizedBox(height: 20),
@@ -77,7 +74,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 Text(
                   'Quantidade',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold
                   ),
                 ),
@@ -87,7 +84,9 @@ class _ProductScreenState extends State<ProductScreen> {
                       icon: Icon(Icons.remove),
                       onPressed: () {
                         if (quantity > 1) {
-                          quantity--;
+                          setState(() {
+                            quantity--;
+                          });                         
                         }
                       }, 
                     ),
@@ -100,7 +99,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: () {
-                        quantity++;
+                        setState(() {
+                            quantity++;
+                        });
                       },
                     ),
                   ],
@@ -116,7 +117,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  backgroundColor: Color(0xFF4AA66C),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: Text(

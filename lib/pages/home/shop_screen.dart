@@ -11,6 +11,7 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
+  // Define uma lista de produtos
   final List<Map<String, dynamic>> products = [
     {'name': 'Maçã', 'price': 7.99, 'descricao': 'Uma maça', 'image': 'assets/maca.jpg'},
     {'name': 'Banana', 'price': 11.99, 'descricao': 'Uma banana', 'image': 'assets/banana.jpg'},
@@ -44,6 +45,7 @@ class _ShopScreenState extends State<ShopScreen> {
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
+            // Percorre a lista dos produtos
             final product = products[index];
 
             return GestureDetector(
@@ -92,7 +94,7 @@ class _ShopScreenState extends State<ShopScreen> {
 
                     ElevatedButton(
                       onPressed: () {
-                        widget.addToCart({...product, 'quantity': 1}, 1);
+                        widget.addToCart({...product}, 1);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('${product['name']} adicionado(a) ao carrinho!'))
                         );

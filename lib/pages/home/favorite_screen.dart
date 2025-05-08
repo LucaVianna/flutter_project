@@ -16,11 +16,13 @@ class FavoriteScreen extends StatelessWidget {
         ),
         backgroundColor: Color(0xFF4AA66C),
       ),
-      body: Text(
-        'Página em construção',
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+      body: Center(
+        child: Text(
+          'Página em construção',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
