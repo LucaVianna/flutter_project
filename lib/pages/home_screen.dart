@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _screens.addAll([
-      ShopScreen(addToCart: (product) => addToCart(cartItems, product, setState)),
+      ShopScreen(addToCart: (product, quantity) => addToCart(cartItems, product, quantity, setState)),
       ExploreScreen(),
       CartScreen(
         cartItems: cartItems,

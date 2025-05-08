@@ -1,16 +1,16 @@
 // Função que adiciona item ao carrinho
-void addToCart(List<Map<String, dynamic>> cartItems ,Map<String, dynamic> product, Function setStateCallBack) {
+void addToCart(List<Map<String, dynamic>> cartItems, Map<String, dynamic> product, int quantity, Function setStateCallBack) {
   setStateCallBack(() {
     bool exists = false;
     for (var item in cartItems) {
       if (item['name'] == product['name']) {
-        item['quantity'] += 1;
+        item['quantity'] += quantity;
         exists = true;
         break;
       }
     }
     if (!exists) {
-      cartItems.add({...product, 'quantity': 1});
+      cartItems.add({...product, 'quantity': quantity});
     }
   });
 }
@@ -44,7 +44,7 @@ void decreaseQuantity(List<Map<String, dynamic>> cartItems, String productName, 
 }
 
 // Função que remove um item do carrinho
-void removeFromCart(List<Map<String, dynamic>> cartItems ,String productName, Function setStateCallBack) {
+void removeFromCart(List<Map<String, dynamic>> cartItems, String productName, Function setStateCallBack) {
   setStateCallBack(() {
     cartItems.removeWhere((item) => item['name'] == productName);
   });
