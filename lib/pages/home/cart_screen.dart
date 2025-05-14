@@ -32,12 +32,10 @@ class _CartScreenState extends State<CartScreen> {
           child: Text(
             'Carrinho',
             style: TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        backgroundColor: Color(0xFF4AA66C),
       ),
       body: widget.cartItems.isEmpty ? Center(
         child: Text(

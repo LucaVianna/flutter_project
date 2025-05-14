@@ -16,9 +16,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF4AA66C),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -117,14 +115,17 @@ class _ProductScreenState extends State<ProductScreen> {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4AA66C),
+                  // Cor definida no ThemeData
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
                 child: Text(
                   'Adicionar ao Carrinho',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white,
+                    // Cor definida no ThemeData
                   ),
                 ),
               ),

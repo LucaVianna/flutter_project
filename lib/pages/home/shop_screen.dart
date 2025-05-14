@@ -27,12 +27,10 @@ class _ShopScreenState extends State<ShopScreen> {
           child: Text(
             'Shopping',
             style: TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        backgroundColor: Color(0xFF4AA66C),
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
@@ -100,15 +98,15 @@ class _ShopScreenState extends State<ShopScreen> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF4AA66C),
+                        // Cor definida no ThemeData
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                       child: Icon(
                         Icons.add,
-                        color: Colors.white,
                         size: 20,
+                        // Cor definida no ThemeData
                       )
                     ),
                   ],

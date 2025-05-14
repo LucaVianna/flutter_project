@@ -3,6 +3,7 @@ import './home/shop_screen.dart';
 import './home/favorite_screen.dart';
 import './home/explore_screen.dart';
 import './home/cart_screen.dart';
+import './home/profile_screen.dart';
 import './utils/funcs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         removeFromCart: (productName) => removeFromCart(cartItems, productName, setState),
       ),
       FavoriteScreen(),
-      //ProfileScreen(),
+      ProfileScreen(),
     ]);
   }
 
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explorar'),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Carrinho'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoritos'),
-          //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
       ),
     );

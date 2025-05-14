@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF4AA66C),
+            foregroundColor: Colors.white,
+          ),
+        ),
       ),
       home: WelcomeScreen(),
     );
