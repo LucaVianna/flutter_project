@@ -13,10 +13,13 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   // Define uma lista de produtos
   final List<Map<String, dynamic>> products = [
-    {'name': 'Maçã', 'price': 7.99, 'descricao': 'Uma maça', 'image': 'assets/maca.jpg'},
-    {'name': 'Banana', 'price': 11.99, 'descricao': 'Uma banana', 'image': 'assets/banana.jpg'},
-    {'name': 'Cenoura', 'price': 6.99, 'descricao': 'Uma cenoura', 'image': 'assets/cenoura.jpg'},
-    {'name': 'Tomate', 'price': 5.99, 'descricao': 'Um tomate', 'image': 'assets/tomate.jpg'}
+    {'name': 'Maçã', 'price': 7.99, 'descricao': '1kg', 'image': 'assets/apple.png'},
+    {'name': 'Coca-Cola', 'price': 11.99, 'descricao': '355ml', 'image': 'assets/coke.png'},
+    {'name': 'Coca-Cola Diet', 'price': 11.99, 'descricao': '355ml', 'image': 'assets/cokeDiet.png'},
+    {'name': 'Ovo', 'price': 10.99, 'descricao': '1.5kg', 'image': 'assets/egg.png'},
+    {'name': 'Pasta', 'price': 6.99, 'descricao': '0.5kg', 'image': 'assets/pasta.png'},
+    {'name': 'Pepsi', 'price': 11.99, 'descricao': '355ml', 'image': 'assets/pepsi.png'},
+    {'name': 'Sprite', 'price': 11.99, 'descricao': '355ml', 'image': 'assets/sprite.png'},
   ];
 
   @override

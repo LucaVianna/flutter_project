@@ -5,7 +5,7 @@ Recursos:
 [x] RC3 - Passager dados entre as páginas (Aula 3 - Rotas e Navegação)
 [x] RC4 - Definir um formulário (Aula 4 - Widgets de Input e Dialog, Buttons e Material Widgets)
 [] RC5 - Usar a classe LayoutBuilder ou MediaQuery para tornar o app responsivo à rotação de tela (Aula 5 - Criação de Layouts com Flutter)
-[] RC6 - Usar ThemeData (Aula 5 - Criação de Layouts com Flutter)
+[x] RC6 - Usar ThemeData (Aula 5 - Criação de Layouts com Flutter)
 
 Telas:
 
