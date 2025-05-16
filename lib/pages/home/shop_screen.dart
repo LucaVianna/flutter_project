@@ -63,56 +63,78 @@ class _ShopScreenState extends State<ShopScreen> {
               child: Card(
                 elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10)
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        product['image'],
-                        fit: BoxFit.cover
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Image.asset(
+                            product['image'],
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),                      
+                      SizedBox(height: 8),
+
+                      Text(
                         product['name'],
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    Text(
-                      'R\$${product['price'].toStringAsFixed(2)}',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey
+                      Text(
+                        product['descricao'],
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10),
+                      SizedBox(height: 8),
 
-                    ElevatedButton(
-                      onPressed: () {
-                        widget.addToCart({...product}, 1);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('${product['name']} adicionado(a) ao carrinho!'))
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        // Cor definida no ThemeData
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'R\$${product['price'].toStringAsFixed(2)}',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                widget.addToCart({...product}, 1);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('${product['name']} adicionado(a) ao carrinho!'))
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.add,
+                                size: 20,
+                              ),
+                            ),
+                          ), 
+                        ],
                       ),
-                      child: Icon(
-                        Icons.add,
-                        size: 20,
-                        // Cor definida no ThemeData
-                      )
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );
