@@ -17,122 +17,178 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                widget.product['image'],
-                height: 200,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Image.asset(
+                    widget.product['image'],
+                    height: 250,
+                    fit: BoxFit.contain,
+                  ),
+                ), 
               ),
-            ),
-            SizedBox(height: 20),
+              SizedBox(height: 20),
 
-            Text(
-              widget.product['name'],
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.product['name'],
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        widget.product['descricao'],
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey
+                        ),
+                      ),                      
+                    ],
+                  ),
+                  Icon(Icons.favorite_border, size: 28)
+                ],
               ),
-            ),
-            SizedBox(height: 20),
+              SizedBox(height: 20),
 
-            Text(
-              'R\$${widget.product['price'].toStringAsFixed(2)} por unidade',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.remove),
+                        onPressed: () {
+                          if (quantity > 1) {
+                            setState(() {
+                              quantity--;
+                            });                         
+                          }
+                        },
+                      ),
+                      Text(
+                        '$quantity',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          setState(() {
+                              quantity++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'R\$${widget.product['price'].toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: 20),
-
-            Text(
-              'Descrição do produto',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 20),
-
-            Text(
-              widget.product['descricao'],
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(height: 20),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Quantidade',
+              SizedBox(height: 20),
+              
+              ExpansionTile(
+                title: Text(
+                  'Detalhes do produto',
                   style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
                   ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.remove),
-                      onPressed: () {
-                        if (quantity > 1) {
-                          setState(() {
-                            quantity--;
-                          });                         
-                        }
-                      }, 
-                    ),
-                    Text(
-                      '$quantity',
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum nunc et ex sagittis cursus.',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {
-                        setState(() {
-                            quantity++;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  widget.addToCart(widget.product, quantity);
-                  Navigator.pop(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  // Cor definida no ThemeData
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text(
+                  'Nutrições',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
                   ),
                 ),
-                child: Text(
-                  'Adicionar ao Carrinho',
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum nunc et ex sagittis cursus.',
+                      style: TextStyle(
+                        fontSize: 16
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text(
+                  'Avaliações',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
+                  ),
+                ),
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      children: List.generate(5, (index) => Icon(Icons.star, color: Colors.amber, size: 24)),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),   
+           
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    widget.addToCart(widget.product, quantity);
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
                     // Cor definida no ThemeData
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Text(
+                    'Adicionar ao Carrinho',
+                    style: TextStyle(
+                      fontSize: 18,
+                      // Cor definida no ThemeData
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      ), 
     );
   }
 }
