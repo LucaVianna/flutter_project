@@ -59,21 +59,27 @@ class _CartScreenState extends State<CartScreen> {
                 width: 50,
                 height: 50,
               ),
-              title: Text(
-                item['name'],
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold
-                ),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${item['name']}',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text(
+                    '${item['descricao']}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
-              subtitle: Text(
-                'R\$${item['price'].toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: Colors.grey
-                ),
-              ),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   IconButton(
                     icon: Icon(Icons.remove),
@@ -89,25 +95,41 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.add),
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.green,
+                    ),
                     onPressed: () {
                       widget.increaseQuantity(item['name']);
                       updateUI();
                     }
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.close, 
-                      color: Colors.red,
-                      size: 18,
+                ],
+              ), 
+              trailing: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        size: 18,
+                      ),
+                      onPressed: () {
+                        widget.removeFromCart(item['name']);
+                        updateUI();                    
+                      }
                     ),
-                    onPressed: () {
-                      widget.removeFromCart(item['name']);
-                      updateUI();                    
-                    }
+                  ),
+                  Text(
+                    'R\$${item['price'].toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
-              ),
+              ),  
             ),
           );
         },

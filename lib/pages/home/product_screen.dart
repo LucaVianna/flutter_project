@@ -84,7 +84,10 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.add),
+                        icon: Icon(
+                          Icons.add,
+                          color: Colors.green,
+                        ),
                         onPressed: () {
                           setState(() {
                               quantity++;
