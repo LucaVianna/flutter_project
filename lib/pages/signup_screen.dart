@@ -13,6 +13,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _agreeTerms = false;
 
+  bool _isEmailValid = false;
+  bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,8 +84,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 decoration: InputDecoration(
                                   labelText: 'Email',
                                   border: OutlineInputBorder(),
+                                  suffixIcon: _isEmailValid
+                                    ? Icon(Icons.check_circle, color: Colors.green)
+                                    : null
                                 ),
-                                validator: (value) => value!.contains('@') ? null : 'Insira um email válido',
+                                onChanged: (value) {
+                                  setState(() {
+                                    _isEmailValid = value.contains('@');
+                                  });
+                                },
+                                validator: (value) => value!.contains('@') ? null : 'Insira um email válido', 
                               ),
                             ), 
                           ],
@@ -106,7 +117,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             decoration: InputDecoration(
                               labelText: 'Email',
                               border: OutlineInputBorder(),
-                            ),
+                              suffixIcon: _isEmailValid
+                                ? Icon(Icons.check_circle, color: Colors.green)
+                                : null
+                            ),                            
+                            onChanged: (value) {
+                              setState(() {
+                                _isEmailValid = value.contains('@');
+                              });
+                            },
                             validator: (value) => value!.contains('@') ? null : 'Insira um email válido',
                           ),
                         ],
@@ -119,8 +138,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         decoration: InputDecoration(
                           labelText: 'Senha',
                           border: OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                          ),
                         ),
-                        obscureText: true,
+                        obscureText: !_passwordVisible,
                         validator: (value) => value!.length >= 6 ? null : 'Senha precisa de no mínimo 6 caracteres',
                       ),
                       SizedBox(height: 15),
